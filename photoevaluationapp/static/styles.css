@@ -1,0 +1,207 @@
+/* ベースのスタイル */
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* コンテナのスタイル */
+.container {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+/* ヘッダーのスタイル */
+header {
+    background-color: #1f1f1f;
+    padding: 10px 10px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ロゴのスタイル */
+.logo {
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* ナビゲーションのスタイル */
+.nav-right {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-right li {
+    display: inline;
+}
+
+.nav-right li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-right li a:hover {
+    text-decoration: underline;
+}
+
+/* フッターのスタイル */
+footer {
+    background-color: #1f1f1f;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer .container {
+    color: #fff;
+    font-size: 14px;
+}
+
+/* アップロードボタンのデザイン */
+.btn {
+    background-color: #ff4b5c;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #e43f4a;
+}
+
+/* ドラッグ＆ドロップエリアのデザイン */
+.dotted-border {
+    border: 2px dashed #ffffff;
+    width: 320px;
+    height: 320px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    overflow: hidden; /* プレビューエリアから画像がはみ出さないようにする */
+}
+
+.dotted-border:hover {
+    border-color: #ff4b5c;
+}
+
+/* プレビュー画像のスタイル */
+#preview {
+    margin-top: 20px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* アスペクト比を保持しながら、枠内に収める */
+    display: none;
+}
+
+/* コメント部分のスタイル */
+.comment {
+    font-size: 16px; /* 文字サイズを少し小さくする */
+    line-height: 1.6; /* 行間を広げて読みやすくする */
+    margin-bottom: 20px; /* 各コメントの下に余白を追加 */
+}
+
+/* カードレイアウトのスタイル */
+.card {
+    background-color: #1f1f1f; /* カードの背景色 */
+    border-radius: 8px; /* 角を丸める */
+    padding: 20px; /* カード内の余白 */
+    margin-bottom: 20px; /* カード間の余白 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影をつけて浮き上がるように見せる */
+}
+
+/* メディアクエリを使用して、画面サイズに応じたレイアウトを提供 */
+@media (max-width: 768px) {
+    .card {
+        padding: 15px; /* モバイルでのパディング調整 */
+        margin-bottom: 15px; /* モバイルでのカード間余白調整 */
+    }
+
+    .container {
+        width: 90%; /* モバイルでのコンテナ幅調整 */
+    }
+
+    h1 {
+        font-size: 24px; /* タイトルサイズを調整 */
+    }
+}
+
+/* タイトルのセンタリングを完全に修正 */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 28px; /* 必要に応じてタイトルサイズも調整 */
+}
+
+/* ボタンのデザイン */
+.btn-primary {
+    background-color: #ff4b5c;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e43f4a;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* 半透明の黒背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* 最前面に表示 */
+}
+
+.spinner {
+    border: 8px solid rgba(255, 255, 255, 0.3); /* 薄い色の外枠 */
+    border-top: 8px solid #ffffff; /* 濃い色の内枠 */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite; /* 回転アニメーション */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-screen p {
+    color: #ffffff;
+    margin-top: 10px;
+    font-size: 18px;
+    text-align: center;
+}

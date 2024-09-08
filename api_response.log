@@ -1,0 +1,226 @@
+スレッド作成レスポンス: {
+  "id": "thread_612Gmrl5ad2X2WtuKBEBGRBb",
+  "object": "thread",
+  "created_at": 1723648682,
+  "metadata": {},
+  "tool_resources": {}
+}
+メッセージ送信レスポンス: {
+  "id": "msg_05Q9s181n50rQuBm31bZjAOR",
+  "object": "thread.message",
+  "created_at": 1723648682,
+  "assistant_id": null,
+  "thread_id": "thread_612Gmrl5ad2X2WtuKBEBGRBb",
+  "run_id": null,
+  "role": "user",
+  "content": [
+    {
+      "type": "text",
+      "text": {
+        "value": "\u3044\u3044\u69cb\u56f3\u3068\u306f\u4f55\u304b\u6559\u3048\u3066\u304f\u3060\u3055\u3044\u3002",
+        "annotations": []
+      }
+    }
+  ],
+  "attachments": [],
+  "metadata": {}
+}
+Run作成レスポンス: {
+  "id": "run_B7OjyCWhwcjyrFtEeLjefIk5",
+  "object": "thread.run",
+  "created_at": 1723648682,
+  "assistant_id": "asst_BCZLRYCY163E5KjO4ASDbmQo",
+  "thread_id": "thread_612Gmrl5ad2X2WtuKBEBGRBb",
+  "status": "queued",
+  "started_at": null,
+  "expires_at": 1723649282,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "required_action": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "\u3053\u306e\u30ea\u30af\u30a8\u30b9\u30c8\u3092\u51e6\u7406\u3057\u3066\u3001\u30e6\u30fc\u30b6\u30fc\u306b\u9069\u5207\u306a\u56de\u7b54\u3092\u63d0\u4f9b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {},
+  "metadata": {},
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "incomplete_details": null,
+  "usage": null,
+  "response_format": {
+    "type": "text"
+  },
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+Runステータスレスポンス: {
+  "id": "run_B7OjyCWhwcjyrFtEeLjefIk5",
+  "object": "thread.run",
+  "created_at": 1723648682,
+  "assistant_id": "asst_BCZLRYCY163E5KjO4ASDbmQo",
+  "thread_id": "thread_612Gmrl5ad2X2WtuKBEBGRBb",
+  "status": "in_progress",
+  "started_at": 1723648683,
+  "expires_at": 1723649282,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "required_action": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "\u3053\u306e\u30ea\u30af\u30a8\u30b9\u30c8\u3092\u51e6\u7406\u3057\u3066\u3001\u30e6\u30fc\u30b6\u30fc\u306b\u9069\u5207\u306a\u56de\u7b54\u3092\u63d0\u4f9b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {},
+  "metadata": {},
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "incomplete_details": null,
+  "usage": null,
+  "response_format": {
+    "type": "text"
+  },
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+Runステータスレスポンス: {
+  "id": "run_B7OjyCWhwcjyrFtEeLjefIk5",
+  "object": "thread.run",
+  "created_at": 1723648682,
+  "assistant_id": "asst_BCZLRYCY163E5KjO4ASDbmQo",
+  "thread_id": "thread_612Gmrl5ad2X2WtuKBEBGRBb",
+  "status": "in_progress",
+  "started_at": 1723648683,
+  "expires_at": 1723649282,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "required_action": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "\u3053\u306e\u30ea\u30af\u30a8\u30b9\u30c8\u3092\u51e6\u7406\u3057\u3066\u3001\u30e6\u30fc\u30b6\u30fc\u306b\u9069\u5207\u306a\u56de\u7b54\u3092\u63d0\u4f9b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {},
+  "metadata": {},
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "incomplete_details": null,
+  "usage": null,
+  "response_format": {
+    "type": "text"
+  },
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+Runステータスレスポンス: {
+  "id": "run_B7OjyCWhwcjyrFtEeLjefIk5",
+  "object": "thread.run",
+  "created_at": 1723648682,
+  "assistant_id": "asst_BCZLRYCY163E5KjO4ASDbmQo",
+  "thread_id": "thread_612Gmrl5ad2X2WtuKBEBGRBb",
+  "status": "in_progress",
+  "started_at": 1723648683,
+  "expires_at": 1723649282,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": null,
+  "required_action": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "\u3053\u306e\u30ea\u30af\u30a8\u30b9\u30c8\u3092\u51e6\u7406\u3057\u3066\u3001\u30e6\u30fc\u30b6\u30fc\u306b\u9069\u5207\u306a\u56de\u7b54\u3092\u63d0\u4f9b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {},
+  "metadata": {},
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "incomplete_details": null,
+  "usage": null,
+  "response_format": {
+    "type": "text"
+  },
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}
+Runステータスレスポンス: {
+  "id": "run_B7OjyCWhwcjyrFtEeLjefIk5",
+  "object": "thread.run",
+  "created_at": 1723648682,
+  "assistant_id": "asst_BCZLRYCY163E5KjO4ASDbmQo",
+  "thread_id": "thread_612Gmrl5ad2X2WtuKBEBGRBb",
+  "status": "completed",
+  "started_at": 1723648683,
+  "expires_at": null,
+  "cancelled_at": null,
+  "failed_at": null,
+  "completed_at": 1723648698,
+  "required_action": null,
+  "last_error": null,
+  "model": "gpt-4o",
+  "instructions": "\u3053\u306e\u30ea\u30af\u30a8\u30b9\u30c8\u3092\u51e6\u7406\u3057\u3066\u3001\u30e6\u30fc\u30b6\u30fc\u306b\u9069\u5207\u306a\u56de\u7b54\u3092\u63d0\u4f9b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "tools": [
+    {
+      "type": "file_search"
+    }
+  ],
+  "tool_resources": {},
+  "metadata": {},
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_completion_tokens": null,
+  "max_prompt_tokens": null,
+  "truncation_strategy": {
+    "type": "auto",
+    "last_messages": null
+  },
+  "incomplete_details": null,
+  "usage": {
+    "prompt_tokens": 12996,
+    "completion_tokens": 708,
+    "total_tokens": 13704
+  },
+  "response_format": {
+    "type": "text"
+  },
+  "tool_choice": "auto",
+  "parallel_tool_calls": true
+}

@@ -1,0 +1,128 @@
+import os
+from dotenv import load_dotenv
+from flask import Flask, request, render_template, redirect, url_for, session
+from werkzeug.utils import secure_filename
+import firebase_admin
+from firebase_admin import credentials, storage, firestore, auth
+import requests
+
+app = Flask(__name__)
+app.secret_key = 'supersecretkey'
+
+# 環境変数をロード
+load_dotenv()
+
+# Firebaseの設定
+cred = credentials.Certificate('firebase-adminsdk.json')
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'photoevaluationapp-41036.appspot.com'
+})
+db = firestore.client()
+
+# PhotoGuru APIキーの設定
+PHOTOGURU_API_KEY = os.getenv("PHOTOGURU_API_KEY")
+PHOTOGURU_API_ENDPOINT = os.getenv("PHOTOGURU_API_ENDPOINT")
+
+# アップロードフォルダの設定
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def upload_photo_to_photoguru(filename):
+    with open(filename, 'rb') as image_file:
+        response = requests.post(
+            f"{PHOTOGURU_API_ENDPOINT}/photos",
+            headers={'Authorization': f'Bearer {PHOTOGURU_API_KEY}'},
+            files={'photo': image_file},
+            data={'user_id': 1}
+        )
+
+    if response.status_code == 200:
+        result = response.json()
+        return result.get('evaluation_id'), "Photo uploaded successfully and evaluation started."
+    else:
+        return None, "Failed to upload photo to PhotoGuru."
+
+def get_evaluation_from_photoguru(evaluation_id):
+    response = requests.get(
+        f"{PHOTOGURU_API_ENDPOINT}/evaluations/{evaluation_id}",
+        headers={'Authorization': f'Bearer {PHOTOGURU_API_KEY}'}
+    )
+
+    if response.status_code == 200:
+        evaluation = response.json()
+    else:
+        evaluation = {"error": "Failed to get evaluation from PhotoGuru"}
+
+    return evaluation
+
+@app.route('/')
+def index():
+    return render_template('upload.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        try:
+            user = auth.get_user_by_email(email)
+            if not user:
+                return 'Login failed'
+            session['user'] = user.uid
+            return redirect(url_for('upload_file'))
+        except:
+            return 'Login failed'
+    return render_template('login.html')
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        if 'file' not in request.files:
+            return 'No file part'
+        file = request.files['file']
+        if file.filename == '':
+            return 'No selected file'
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(filename)
+
+            # Firebaseストレージにファイルをアップロード
+            bucket = storage.bucket()
+            blob = bucket.blob(filename)
+            blob.upload_from_filename(filename)
+
+            # ローカルに保存したファイルを削除
+            os.remove(filename)
+
+            # PhotoGuruに写真をアップロードして評価IDを取得
+            evaluation_id, message = upload_photo_to_photoguru(filename)
+            if evaluation_id:
+                # PhotoGuruから評価結果を取得
+                evaluation = get_evaluation_from_photoguru(evaluation_id)
+
+                # 評価データをデータベースに保存
+                user_id = session['user']
+                doc_ref = db.collection('evaluations').document()
+                doc_ref.set({
+                    **evaluation,
+                    "user_id": user_id
+                })
+
+                return render_template('result.html', evaluation=evaluation)
+            else:
+                return message
+
+    return render_template('upload.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('login'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
