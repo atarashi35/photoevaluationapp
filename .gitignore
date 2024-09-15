@@ -67,6 +67,9 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+<<<<<<< HEAD
 
 venv/
 node_modules/
+=======
+>>>>>>> cbaca639 (Your commit message)
