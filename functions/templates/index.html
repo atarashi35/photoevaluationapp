@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Photo Upload{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1>写真をアップロード</h1>
+    <form id="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
+        <div id="upload-area" class="dotted-border" style="width: 320px; height: 320px; margin: 0 auto; display: flex; align-items: center; justify-content: center; position: relative;">
+            <input type="file" id="file-input" name="file" style="display: none;">
+            <label for="file-input" id="file-label" class="upload-label" style="cursor: pointer;">
+                ここにファイルをドラッグ＆ドロップ<br>または<br>ここからファイルを選択
+            </label>
+            <img id="preview" src="#" alt="Image Preview" style="display: none;">
+        </div>
+        <button type="submit" id="upload-btn" class="btn">評価する</button>
+    </form>
+
+    <!-- ローディング画面 -->
+    <div id="loading-screen" style="display: none;">
+        <div class="spinner"></div>
+        <p>画像を評価中...</p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('file-input').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const preview = document.getElementById('preview');
+        const label = document.getElementById('file-label');
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+                label.style.display = 'none';
+                document.getElementById('upload-area').style.border = '2px dashed #ff4b5c';
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('upload-form').addEventListener('submit', function(event) {
+        // フォーム送信時にローディング画面を表示
+        document.getElementById('loading-screen').style.display = 'flex';
+    });
+
+    document.getElementById('upload-area').style.border = '2px dashed #ffffff';
+</script>
+{% endblock %}

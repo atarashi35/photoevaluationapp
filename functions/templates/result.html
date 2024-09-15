@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}評価結果{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="text-align: center;">評価結果</h1>
+
+    {% for category, data in evaluation.items() %}
+    <div class="card">
+        {% if category == "総合評価" %}
+            <h2>{{ category }}: {{ data.score }}/100点</h2>
+        {% else %}
+            <h2>{{ category }}: {{ data.score }}/10</h2>
+        {% endif %}
+        <p class="comment">{{ data.comment }}</p>
+    </div>
+    {% endfor %}
+
+    <!-- 「別の写真を評価する」ボタンを追加 -->
+    <div class="text-center mt-5">
+        <a href="{{ url_for('upload_file') }}" class="btn btn-primary">別の写真を評価する</a>
+    </div>
+</div>
+{% endblock %}
