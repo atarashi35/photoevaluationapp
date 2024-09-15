@@ -137,7 +137,7 @@ def upload_file():
 
             # Firebase Storageにアップロード後、評価ページへリダイレクト
             return redirect(url_for('evaluate_photo', image_url=image_url))
-    return render_template('upload.html')
+    return render_template('index.html')
 
 @app.route('/evaluate_photo')
 def evaluate_photo():
