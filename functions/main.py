@@ -11,8 +11,8 @@ from datetime import timedelta
 from dotenv import load_dotenv
 from google.cloud import secretmanager
 
-# Flaskアプリケーションを作成（テンプレートフォルダを指定）
-app = Flask(__name__, template_folder='templates')
+# Flaskアプリケーションを作成
+app = Flask(__name__, template_folder='templates') 
 app.secret_key = os.urandom(24)  # セッション管理のための秘密鍵
 
 # ロギングの設定
@@ -203,5 +203,5 @@ def main(request):
     return app(request)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 8081))  # Cloud Runは環境変数PORTを使用します
+    port = int(os.environ.get('PORT', 8080))  # Cloud Runは環境変数PORTを使用します
     app.run(host='0.0.0.0', port=port)
